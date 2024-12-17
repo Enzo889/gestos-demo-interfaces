@@ -8,31 +8,39 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CarouselDApiDemo } from "./tabs1";
+import { DrawerDemo } from "./tabs2";
+import { ResizableDemo } from "./tabs3";
+import { PasswordGenerator } from "./tabs4";
 
 export function TabsDemo() {
+  const demosNames = ["Carousel", "Drawer", "Resizable", "Slider", "Draggable"];
   return (
-    <Tabs defaultValue="account" className="w-[400px]">
-      <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+    <Tabs defaultValue="account" className="w-full">
+      <TabsList className="grid w-full gap-2 grid-cols-5">
+        {demosNames.map((name) => (
+          <TabsTrigger key={name} value={name}>
+            {name}
+          </TabsTrigger>
+        ))}
       </TabsList>
-      <TabsContent value="account">
+      <TabsContent className="mt-6" value={demosNames[0]}>
+        <CarouselDApiDemo />
+      </TabsContent>
+      <TabsContent className="mt-6 " value={demosNames[1]}>
         <Card>
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
-            <CardDescription>
-              Make changes to your account here. Click save when you're done.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <p>first card</p>
+          <CardContent className="flex justify-center items-center pt-4">
+            <DrawerDemo />
           </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
         </Card>
       </TabsContent>
-      <TabsContent value="password">
+      <TabsContent className="mt-6 flex justify-center" value={demosNames[2]}>
+        <ResizableDemo />
+      </TabsContent>
+      <TabsContent className=" flex justify-center" value={demosNames[3]}>
+        <PasswordGenerator />
+      </TabsContent>
+      <TabsContent value={demosNames[4]}>
         <Card>
           <CardHeader>
             <CardTitle>Password</CardTitle>
@@ -40,9 +48,7 @@ export function TabsDemo() {
               Change your password here. After saving, you'll be logged out.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-2">
-            <p>second card</p>
-          </CardContent>
+          <CardContent className="space-y-2"></CardContent>
           <CardFooter>
             <Button>Save password</Button>
           </CardFooter>
