@@ -35,19 +35,19 @@ export function PasswordGenerator() {
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Generador de Contraseña</CardTitle>
+        <CardTitle>Password Generator</CardTitle>
         <CardDescription>
-          Ajusta la longitud de la contraseña y genera una nueva.
+          Adjust the password length and generate a new one.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-1">
-          <Label htmlFor="password">Contraseña Generada</Label>
+          <Label htmlFor="password">Generated Password</Label>
           <Input id="password" value={generatedPassword} readOnly />
         </div>
         <div className="space-y-1">
           <Label htmlFor="password-length">
-            Longitud de la Contraseña: {passwordLength}
+            Password Length: {passwordLength}
           </Label>
           <Slider
             id="password-length"
@@ -63,7 +63,7 @@ export function PasswordGenerator() {
         <Button
           onClick={() => setGeneratedPassword(generatePassword(passwordLength))}
         >
-          Generar Nueva Contraseña
+          Generate new password
         </Button>
       </CardFooter>
     </Card>
